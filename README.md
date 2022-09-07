@@ -104,8 +104,8 @@ testing/course_test.py:20: TypeError
 FAILED Course in Course.py Test setting and getting for title - TypeError: Course() takes no arguments
 FAILED Course in Course.py Test setting and getting for schedule - TypeError: Course() takes no arguments
 FAILED Course in Course.py Test setting and getting for description - TypeError: Course() takes no arguments
-
 ```
+
 Looks like we have some methods to define. Let's start with the instance variable
 tests. The test output tells us that we need setters and getters for `title`,
 `schedule` and `description`.
@@ -126,7 +126,7 @@ class Course:
 ```
 
 Go ahead and run the test suite again. Now we should be passing all of our
-instance method tests! But not our class method tests...
+instance method tests!
 
 ## Code Along II: The `Scraper` Class
 
@@ -157,9 +157,10 @@ and `description` attribute that we scraped from the page.
 ### `#print_courses`
 
 The `#print_courses` method we made for you! It calls on `.make_courses` and
-then iterates over all of the courses that get created to `puts` out a list of
-course offerings. We gave you this freebie so that we can easily see how cool it
-is to scrape data and make real live Ruby objects with it.
+then iterates over all of the courses that get created to `print` out a list of
+course offerings using the `__str__` method we wrote for the Course class.
+ We gave you this freebie so that we can easily see how cool it
+is to scrape data and make real live Python objects with it.
 
 Now that we have a basic concept of the methods we're expected to build, we're
 going to ignore them (surprise!). We've already discussed how tricky it is to
@@ -533,8 +534,8 @@ should be passing.
 #### `#get_courses`
 
 The `#get_courses` method should operate on the HTML page (which is the return
-value of the `.get_page` method) and return the collection of Nokogiri XML
-elements that describe each course. So, we'll call on our `.get_page` method
+value of the `.get_page` method) and return the collection of Beautiful Soup
+tag elements that describe each course. So, we'll call on our `.get_page` method
 inside the `.get_courses` method.
 
 ```py
