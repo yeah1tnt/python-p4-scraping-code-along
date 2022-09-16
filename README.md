@@ -62,7 +62,7 @@ Open up `lib/Course.py` and define your class:
 
 ```py
 class Course:
-  pass
+    pass
 ```
 
 Now, let's run *just* the `Course` specs by typing `python testing/course_test.py`
@@ -134,29 +134,29 @@ Start by running the `Scraper` specs with the `pytest testing/scraper_test.py` l
 in your terminal. You should see failing tests and describe a number of methods.
 Let's run through the desired behavior of each method:
 
-### `#get_page`
+### `get_page()`
 
-The `#get_page` instance method will be responsible for using Beautiful Soup and
+The `get_page()` instance method will be responsible for using Beautiful Soup and
 `requests` to grab the entire HTML document from the web page.
 
-### `#get_courses`
+### `get_courses()`
 
-The `#get_courses` instance method will be responsible for using a CSS selector
+The `get_courses()` instance method will be responsible for using a CSS selector
 to grab all of the HTML elements that contain a course. In other words, the
 return value of this method should be a collection of Beautiful Soup objects,
 each of which describes a course offering. We're going to have to examine the
 page with the element inspector to find the CSS selector that contains the
 courses.
 
-### `#make_courses`
+### `make_courses()`
 
-The `#make_courses` method will be responsible for actually instantiating
+The `make_courses()` method will be responsible for actually instantiating
 `Course` objects and giving each course object the correct `title`, `schedule`
 and `description` attribute that we scraped from the page.
 
-### `#print_courses`
+### `print_courses()`
 
-The `#print_courses` method we made for you! It calls on `.make_courses` and
+The `print_courses()` method we made for you! It calls on `.make_courses` and
 then iterates over all of the courses that get created to `print` out a list of
 course offerings using the `__str__` method we wrote for the Course class.
  We gave you this freebie so that we can easily see how cool it
@@ -166,7 +166,7 @@ Now that we have a basic concept of the methods we're expected to build, we're
 going to ignore them (surprise!). We've already discussed how tricky it is to
 scrape data from a web page. It is a very precise process and it takes *a lot*
 of playing around in `ipdb` to find the right CSS selectors for the desired data.
-So, we're going to start by building our `#get_page` method. **As soon as we get
+So, we're going to start by building our `get_page()` method. **As soon as we get
 the HTML document using Beautiful Soup, we will drop into our program using `ipdb` and
 play around with CSS selectors until we find what we're looking for**. Once we
 have working code, we'll worry about organizing the appropriate code into the
@@ -197,7 +197,7 @@ the file. We are ready to us Beautiful Soup and requests to get our HTML. Add th
 following line to your `.get_page` method:
 
 ```py
-doc =  BeautifulSoup(requests.get("http://learn-co-curriculum.github.io/site-for-scraping/courses").text, 'html.parser')
+doc = BeautifulSoup(requests.get("http://learn-co-curriculum.github.io/site-for-scraping/courses").text, 'html.parser')
 ```
 
 Then, we'll place a `ipdb.set_trace()` on the next line. At the bottom of the file,
@@ -274,7 +274,7 @@ ipdb> doc.select(".post")
 ```
 
 Whoa! That's a lot of results. But, if you take a closer look at the content, you'll
-see that this list of tag (bs4.element.Tag) elements do describe the individual courses. You'll
+see that this list of tag (`bs4.element.Tag`) elements do describe the individual courses. You'll
 notice course titles and descriptions, among other pieces of information.
 
 Okay, now that we have a working line of code for grabbing all of the courses
@@ -414,7 +414,7 @@ So, we can iterate over the collection, make a new `Course` instance for each
 course offering element we are iterating over, and assign that instance the
 scraped title, schedule and description, using the working code for those
 attributes that we already figured out.
-In your `#get_page` method of the `Scraper` class, place the following code:
+In your `get_page()` method of the `Scraper` class, place the following code:
 
 ```py
 from bs4 import BeautifulSoup
@@ -498,14 +498,14 @@ with the `.post` css selector.
 ### Extracting Our Code into Methods
 
 Okay, we have some great working code. But, it doesn't really *all* belong in
-the `#get_page` method. The `#get_page` method should be responsible for *just
+the `get_page()` method. The `get_page()` method should be responsible for *just
 getting the page*. Let's do some refactoring and get our `Scraper` tests
 passing!
 
-#### `#get_page`
+#### `get_page()`
 
 This method should contain *only the code for getting the HTML document*. Place
-the following code in your `#get_page` method and *comment out the rest of that
+the following code in your `get_page()` method and *comment out the rest of that
 method*. We'll need to refer to that code to get our other tests passing.
 
 ```py
@@ -531,24 +531,24 @@ class Scraper:
 Run your `Scraper` test suite with `pytest testing/scraper_test.py`. Your first test
 should be passing.
 
-#### `#get_courses`
+#### `get_courses()`
 
-The `#get_courses` method should operate on the HTML page (which is the return
+The `get_courses()` method should operate on the HTML page (which is the return
 value of the `.get_page` method) and return the collection of Beautiful Soup
 tag elements that describe each course. So, we'll call on our `.get_page` method
 inside the `.get_courses` method.
 
 ```py
 def get_courses(self):
-  return self.get_page().select('.post')
+    return self.get_page().select('.post')
 
 ```
 
 Run the test suite again and the second test should be passing.
 
-#### `#make_courses`
+#### `make_courses()`
 
-The `#make_courses` method should operate on the collection of course offering
+The `make_courses()` method should operate on the collection of course offering
 Beautiful Soup results list that was returned by the `.get_courses` method. The
 `.make_courses` method should iterate over the collection and make a new
 instance of `Course` class for each one while assigning it the appropriate
@@ -612,4 +612,3 @@ class Scraper:
 ```
 
 [site]: http://learn-co-curriculum.github.io/site-for-scraping/courses
-<p class='util--hide'>View <a href='https://learn.co/lessons/scraping-flatiron-code-along'>Scraping Lab</a> on Learn.co and start learning to code for free.</p>
