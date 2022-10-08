@@ -113,7 +113,7 @@ Lets also add the `__str__` function to represents the Course objects as a strin
 
 ```py
 class Course:
-  def __init__(title, schedule, description):
+  def __init__(self, title, schedule, description):
     self.title = title
     self.schedule = schedule
     self.description = description
@@ -130,7 +130,7 @@ instance method tests!
 
 ## Code Along II: The `Scraper` Class
 
-Start by running the `Scraper` specs with the `pytest testing/scraper_test.py` line
+Start by running the `Scraper` specs with the `python testing/scraper_test.py` line
 in your terminal. You should see failing tests and describe a number of methods.
 Let's run through the desired behavior of each method:
 
