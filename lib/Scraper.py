@@ -34,7 +34,7 @@ class Scraper:
 
 scraper = Scraper()
 
-scraper.make_courses()
+# scraper.make_courses()
 
 scraper.print_courses()
 
