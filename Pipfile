@@ -4,12 +4,13 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-requests = "*"
-bs4 = "*"
-ipdb = "*"
-beautifulsoup4 = "*"
+requests = "2.28.1"
+bs4 = "0.0.1"
+ipdb = "0.13.9"
+beautifulsoup4 = "4.11.1"
+pytest = "==7.1.2"
 
 [dev-packages]
 
 [requires]
-python_version = "3.8"
+python_version = "3.8.13"

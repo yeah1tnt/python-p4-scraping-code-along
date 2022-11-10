@@ -1,5 +1,5 @@
-from bs4 import BeautifulSoup
-from lib.Scraper import Scraper
+from bs4 import BeautifulSoup, element
+from Scraper import Scraper
 
 class Test_Scraper:
     '''Scraper in Scraper.py'''
@@ -16,11 +16,10 @@ class Test_Scraper:
         course_offerings = scraper.get_courses()
         assert(len(course_offerings) != 0)
         for course in course_offerings:
-            assert(isinstance(course, element.tag))
+            assert(isinstance(course, element.Tag))
 
     def test_make_courses(self):
         "Test self.courses"
-        #isinstance(var, str)
         scraper = Scraper()
 
         courses = scraper.make_courses()

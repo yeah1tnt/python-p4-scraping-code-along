@@ -38,4 +38,4 @@ scraper = Scraper()
 
 scraper.print_courses()
 
-ipdb.set_trace()
+# ipdb.set_trace()

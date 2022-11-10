@@ -1,4 +1,4 @@
-from lib.Course import Course
+from Course import Course
 
 class Test_Course:
     '''Course in Course.py'''
