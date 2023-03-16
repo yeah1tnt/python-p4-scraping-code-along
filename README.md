@@ -66,7 +66,7 @@ class Course:
 
 ```
 
-Now, let's run *just* the `Course` specs by typing `python testing/course_test.py`
+Now, let's run *just* the `Course` specs by typing `pytest testing/course_test.py`
 in the terminal. You should see the following test output:
 
 ```bash
@@ -134,7 +134,7 @@ instance method tests!
 
 ## Code Along II: The `Scraper` Class
 
-Start by running the `Scraper` specs with the `python testing/scraper_test.py` line
+Start by running the `Scraper` specs with the `pytest testing/scraper_test.py` line
 in your terminal. You should see failing tests and describe a number of methods.
 Let's run through the desired behavior of each method:
 
